@@ -215,7 +215,7 @@ export default async (context) => {
   const onNavigate = async route => {
     // Handle root path redirect
     if (route.path === '/' && options.rootRedirect) {
-      let statusCode = 302
+      let statusCode = 301
       let path = options.rootRedirect
 
       if (typeof options.rootRedirect !== 'string') {
@@ -229,7 +229,7 @@ export default async (context) => {
     const storedRedirect = app.i18n.__redirect
     if (storedRedirect) {
       app.i18n.__redirect = null
-      return [302, storedRedirect]
+      return [301, storedRedirect]
     }
 
     const resolveBaseUrlOptions = {
